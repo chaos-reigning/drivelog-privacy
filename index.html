@@ -58,6 +58,8 @@
     .card p { margin: 0; }
     hr { border: none; border-top: 1px solid #1a1a1a; margin: 48px 0 0; }
     .footer { font-size: 12px; color: #444; margin-top: 16px; letter-spacing: 1px; }
+    .nav { font-size: 13px; color: #555; margin-top: 16px; letter-spacing: 1px; }
+    .nav a { color: #888; }
   </style>
 </head>
 <body>
@@ -66,7 +68,7 @@
     <div class="logo">DRIVE<span>LOG</span></div>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: April 28, 2026</p>
+    <p class="updated">Last updated: May 10, 2026</p>
 
     <p>
       DriveLog is a drive tracking app that records GPS data to calculate your speed, distance,
@@ -80,6 +82,7 @@
       <li>GPS coordinates (latitude and longitude)</li>
       <li>Speed at each recorded point</li>
       <li>Timestamps</li>
+      <li>GPS accuracy estimates (when reported by the device)</li>
     </ul>
     <p>
       This data is collected only when you tap <strong>Start Drive</strong> and stops
@@ -89,39 +92,58 @@
     <h2>How your data is stored</h2>
     <p>
       All trip data — your routes, speeds, and recorded drives — is stored
-      <strong>exclusively on your device</strong> using local storage. Your drives
+      <strong>exclusively on your device</strong> in a local SQLite database. Your drives
       are never uploaded to any server, cloud service, or database operated by us.
+      We do not sync your trips across devices and we do not have a server that holds your data.
     </p>
 
     <h2>How your data is used</h2>
     <p>Collected location data is used solely to:</p>
     <ul>
-      <li>Calculate trip statistics (top speed, average speed, distance, duration)</li>
+      <li>Calculate trip statistics (top speed, average speed, distance, duration, best 0–60 / 60–130 mph timings)</li>
       <li>Draw your route on the in-app map</li>
       <li>Generate shareable trip cards at your request</li>
+      <li>Export trip routes as GPX or KML files at your request</li>
     </ul>
     <p>We do not use your data for advertising, analytics, or any other purpose.</p>
 
     <h2>Data sharing</h2>
     <p>
       We do not sell, share, rent, or transmit your personal data to any third party.
-      The only exception is if you choose to use the share feature, in which case
-      <em>you</em> are sharing the content — we have no involvement in or access to that action.
+      The only exception is if you choose to use the share, save-to-gallery, or export features —
+      in which case <em>you</em> are sharing the content — we have no involvement in or access
+      to that action.
     </p>
 
     <h2>Third-party services</h2>
     <p>
       DriveLog uses the <strong>Google Maps API</strong> to display route maps on share cards
       (Pro feature). When this feature is used, sampled GPS coordinates from your trip are sent
-      to Google's servers to render a static map image. This is governed by
+      to Google's servers to render a static map image. The rendered image is cached on your
+      device so the request is made at most once per trip. This is governed by
+      <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.
+    </p>
+    <p>
+      DriveLog uses <strong>Google Play Billing</strong> to process the optional one-time
+      DriveLog Pro upgrade. When you initiate or restore a purchase, your transaction is
+      handled by Google Play; we receive only the confirmation that you own the Pro SKU,
+      not your payment details. Pro entitlement is recorded in your device's local storage.
+      This is governed by
       <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.
     </p>
     <p>
       DriveLog uses <strong>Sentry</strong> to capture crash reports when something goes wrong
       inside the app. A crash report contains the error message, stack trace, app version, and
       a randomly generated device identifier — it does <em>not</em> contain your GPS coordinates,
-      routes, or trip data. This is governed by
+      routes, trip names, or any other trip data. IP addresses, headers, and cookies are not
+      sent to Sentry. This is governed by
       <a href="https://sentry.io/privacy/" target="_blank">Sentry's Privacy Policy</a>.
+    </p>
+    <p>
+      DriveLog checks for <strong>over-the-air app updates</strong> via Expo's update service
+      on app launch. The check transmits only your installed app version and runtime version to
+      the update server; no personal data is sent. This is governed by
+      <a href="https://expo.dev/privacy" target="_blank">Expo's Privacy Policy</a>.
     </p>
     <p>
       No advertising, analytics, or tracking frameworks are present in the app.
@@ -131,14 +153,17 @@
     <p>
       DriveLog requests background location permission so that GPS tracking continues accurately
       if your screen turns off during a drive. This permission is used solely for active
-      recording sessions and for no other purpose.
+      recording sessions and for no other purpose. A persistent foreground-service notification
+      is shown while a recording is in progress so you always know when location is being collected.
     </p>
 
     <h2>Data retention &amp; deletion</h2>
     <p>
       Your trip data is stored on your device for as long as you choose to keep it.
       You can delete individual trips at any time from within the app by long-pressing a trip
-      and selecting <strong>Delete</strong>. Uninstalling the app removes all data permanently.
+      and selecting <strong>Delete</strong>. Uninstalling the app removes all data permanently,
+      including your Pro entitlement flag (the entitlement itself can be restored from Google Play
+      via the Restore Purchases option).
     </p>
 
     <h2>Children's privacy</h2>
@@ -165,6 +190,7 @@
     </div>
 
     <hr />
+    <p class="nav">See also: <a href="terms.html">Terms of Service</a></p>
     <p class="footer">© 2025–2026 DriveLog. All rights reserved.</p>
 
   </div>

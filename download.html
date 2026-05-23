@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get DriveLog</title>
+  <meta name="description" content="DriveLog — record your drives, track best 0-60 times, share beautiful trip cards. Available free on Google Play." />
+
+  <!-- Open Graph for nicer link previews when shared in messages or social -->
+  <meta property="og:title" content="Get DriveLog" />
+  <meta property="og:description" content="Record your drives. Track 0-60 times. Share beautiful trip cards." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chaos-reigning.github.io/drivelog-privacy/download.html" />
+
+  <!-- Auto-redirect to the Play Store listing after the branded screen
+       renders briefly. `replace` is used so the back button takes users
+       back to the referring page (e.g. Instagram), not to this landing
+       page they only saw for a second. -->
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        window.location.replace(
+          'https://play.google.com/store/apps/details?id=com.chaosreigning.drivelog'
+        );
+      }, 1500);
+    });
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #cccccc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 480px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      color: #ffffff;
+      margin-bottom: 28px;
+    }
+    .logo span { color: #E8FF47; }
+    .tagline {
+      font-size: 16px;
+      color: #aaaaaa;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .redirecting {
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 3px;
+      margin: 36px 0 20px;
+      text-transform: uppercase;
+    }
+    .btn {
+      display: inline-block;
+      background: #E8FF47;
+      color: #080808;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 3px;
+      padding: 18px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.9; }
+    .small {
+      font-size: 12px;
+      color: #555;
+      margin-top: 28px;
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+    }
+    .small strong { color: #888; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="logo">DRIVE<span>LOG</span></div>
+
+    <p class="tagline">Record your drives. Track 0-60 times.</p>
+    <p class="tagline">Share beautiful trip cards.</p>
+
+    <p class="redirecting">Opening Google Play…</p>
+
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.chaosreigning.drivelog">
+      Get it on Google Play
+    </a>
+
+    <p class="small">
+      Or search <strong>DriveLog</strong> in the Google Play app.
+    </p>
+
+  </div>
+</body>
+</html>

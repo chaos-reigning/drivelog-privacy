@@ -12,18 +12,20 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chaos-reigning.github.io/drivelog-privacy/download.html" />
 
-  <!-- Auto-redirect to the Play Store listing after the branded screen
-       renders briefly. `replace` is used so the back button takes users
-       back to the referring page (e.g. Instagram), not to this landing
-       page they only saw for a second. -->
+  <!-- Redirect to the Play Store listing immediately. Two layers for
+       robustness: a meta-refresh that fires even with JS disabled, plus
+       a script-driven `window.location.replace` (fires sooner in most
+       browsers, and uses `replace` so the back button skips this page
+       and returns to the referring app). The body below is the
+       fallback users see only if both redirect paths fail. -->
+  <meta
+    http-equiv="refresh"
+    content="0; url=https://play.google.com/store/apps/details?id=com.chaosreigning.drivelog"
+  />
   <script>
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        window.location.replace(
-          'https://play.google.com/store/apps/details?id=com.chaosreigning.drivelog'
-        );
-      }, 1500);
-    });
+    window.location.replace(
+      'https://play.google.com/store/apps/details?id=com.chaosreigning.drivelog'
+    );
   </script>
 
   <style>
